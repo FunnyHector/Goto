@@ -1,0 +1,28 @@
+<ul>
+  <li>
+    <%= link_to "Goto", root_path, class:"menu" %>
+  </li>
+
+  <li class="menu">
+    <a href="javascript:void(0)" class="drop-button">Suggest</a>
+    <div class="drop-down-content">
+      <a href="#">Add a person</a>
+      <a href="#">Add a skill</a>
+      <a href="#">Suggest a Goto</a>
+    </div>
+  </li>
+
+  <li class="menu">
+    <a href="javascript:void(0)" class="drop-button">Browse</a>
+    <div class="drop-down-content">
+      <a href="#">By people</a>
+      <a href="#">By skills</a>
+      <a href="#">By ranks</a>
+    </div>
+  </li>
+
+  <!-- How to make this "admin" to the right-most? -->
+  <li>
+    <%= link_to "Admin", { controller: "admin", action: "admin" }, class: "menu" %>
+  </li>
+</ul>

@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "main#main"
+
+  get "admin", to: "admin#admin", as: :admin
+  post "/", to: "main#find_best_person", as: :find_best_person
+
+  resources :people, only: [:create]
+  resources :skills, only: [:create]
+  resources :ranks, only: [:create]
+
+
 end

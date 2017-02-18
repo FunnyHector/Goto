@@ -1,0 +1,59 @@
+<h2>GOTO</h2>
+
+<p>
+  What's your questions?
+</p>
+
+<%= form_for :main, url: { action: "find_best_person" }, html: { id: "find-person-form" } do |f| %>
+  <div>
+    <p>
+      <%= f.label :skill_1, "Question 1" %>
+      <%= f.text_field :skill_1, required: true %>
+    </p>
+    <p>
+      <%= f.label :skill_1, "Question 2" %>
+      <%= f.text_field :skill_2 %>
+    </p>
+    <p>
+      <%= f.label :skill_1, "Question 3" %>
+      <%= f.text_field :skill_3 %>
+    </p>
+  </div>
+
+  <div>
+    <%= f.submit "Find the person" %>
+  </div>
+<% end %>
+
+<p>
+  <i>* If you need more than 3 words, you probably want to narrow the problem further down</i>
+</p>
+
+<p>============TESTING=============</p>
+
+<p>
+  <i id="notice"><%= notice %></i>
+</p>
+
+<h4>Add a person</h4>
+<%= form_for :person, url: :people do |f| %>
+  <%= f.label :f_name, "First Name" %>
+  <%= f.text_field :f_name, required: true %>
+  <%= f.submit "Add" %>
+<% end %>
+
+<h4>Add a skill</h4>
+<%= form_for :skill, url: :skills do |f| %>
+  <%= f.label :title, "Skill title" %>
+  <%= f.text_field :title, required: true %>
+  <%= f.submit "Add" %>
+<% end %>
+
+<h4>Add a rank</h4>
+<%= form_for :rank, url: :ranks do |f| %>
+  <%= f.label :person_id, "Person id" %>
+  <%= f.text_field :person_id, required: true %>
+  <%= f.label :skill_id, "Skill id" %>
+  <%= f.text_field :skill_id, required: true %>
+  <%= f.submit "Add" %>
+<% end %>

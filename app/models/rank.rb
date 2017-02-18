@@ -1,9 +1,12 @@
 class Rank < ActiveRecord::Base
-  class SomeKindOfError < Error; end  # TODO need to rename
+  MAX_NUM_QUESTIONS = 3
+
+  # TODO: some uniqueness validation:
+  #       1. each (person, skill) pair must be unique
 
   belongs_to :skill
   belongs_to :person
-  has_many :rank_comments
+  has_many :rank_comments, dependent: :destroy
 
   validates :thumb_ups, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :thumb_downs, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -15,21 +18,26 @@ class Rank < ActiveRecord::Base
   scope :worst_skill_of_person, ->(person) { by_person(person).minimum(:thumb_ups) }
   scope :worst_person_of_skill, ->(skill) { by_skill(skill).minimum(:thumb_ups) }
 
+  # only for MAX_NUM_QUESTIONS problems maximum
+  def self.best_person_for_skills(*skills)
+    raise Error::TooManyQuestionsError.new("Cannot search more than #{MAX_NUM_QUESTIONS} questions") if skills.size > MAX_NUM_QUESTIONS
+
+    
 
 
-  # with a 100-people company, I shouldn't need very complicated algorithm
-
-  # only for 3 problems maximum
-  def self.best_guy_for_skills(*skills)
-    # pseudo code algorithm
-    # if there is a guy who knows ALL these skills
-
-    if skills.size > 3
-      raise SomeKindOfError
-    end
 
 
+
+
+
+
+
+    # FIXME a proper algorithm needed
+    Person.first # for testing
   end
 
+  def to_s
+    "#{person.full_name} -- #{skill.title}"
+  end
 
 end
