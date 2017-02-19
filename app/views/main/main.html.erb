@@ -1,33 +1,29 @@
-<h2>GOTO</h2>
-
 <p>
-  What's your questions?
+  What's your question?
 </p>
 
 <%= form_for :main, url: { action: "find_best_person" }, html: { id: "find-person-form" } do |f| %>
-  <div>
     <p>
-      <%= f.label :skill_1, "Question 1" %>
+      <%= f.label :skill_1, "Keyword 1" %>
       <%= f.text_field :skill_1, required: true %>
     </p>
     <p>
-      <%= f.label :skill_1, "Question 2" %>
+      <%= f.label :skill_1, "Keyword 2" %>
       <%= f.text_field :skill_2 %>
     </p>
     <p>
-      <%= f.label :skill_1, "Question 3" %>
+      <%= f.label :skill_1, "Keyword 3" %>
       <%= f.text_field :skill_3 %>
     </p>
-  </div>
 
-  <div>
-    <%= f.submit "Find the person" %>
-  </div>
+    <p>
+      <i>* If you need more than 3 words, you probably want to narrow the problem further down</i>
+    </p>
+
+    <p>
+      <%= f.submit "Find the person" %>
+    </p>
 <% end %>
-
-<p>
-  <i>* If you need more than 3 words, you probably want to narrow the problem further down</i>
-</p>
 
 <p>============TESTING=============</p>
 

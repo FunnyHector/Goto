@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170212203737) do
     t.integer  "thumb_downs", default: 0, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["person_id", "skill_id"], name: "index_ranks_on_person_id_and_skill_id", unique: true
     t.index ["person_id"], name: "index_ranks_on_person_id"
     t.index ["skill_id"], name: "index_ranks_on_skill_id"
   end

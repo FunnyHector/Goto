@@ -6,6 +6,7 @@ class CreateRanks < ActiveRecord::Migration[5.0]
       t.integer :thumb_ups, null: false, default: 0
       t.integer :thumb_downs, null: false, default: 0
 
+      t.index [:person_id, :skill_id], unique: true
       t.timestamps
     end
   end

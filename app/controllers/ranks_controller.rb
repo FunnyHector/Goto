@@ -4,7 +4,7 @@ class RanksController < ApplicationController
     @rank = Rank.new(rank_params)
 
     if @rank.save
-      flash[:notice] = "#{@rank} has been saved"
+      flash[:notice] = "#{@rank.to_s_oneline} has been saved"
     else
       flash[:notice] = @rank.errors
     end

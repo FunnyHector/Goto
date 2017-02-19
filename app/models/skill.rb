@@ -6,4 +6,8 @@ class Skill < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true, length: { minimum: 1, maximum: 50 }
   validates :description, allow_nil: true, length: { minimum: 1, maximum: 500 }
 
+  def title=(val)
+    super(val.strip.downcase)
+  end
+
 end
